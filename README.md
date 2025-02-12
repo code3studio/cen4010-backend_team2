@@ -13,6 +13,7 @@ Before running the system, ensure you have the following dependencies installed:
 ### Backend (Spring Boot with Java 17)
 
 1. **Java 17** - Install from [Adoptium](https://adoptium.net/) or another distribution.
+2. **Eclipse or Visual Studio Code** - Install an IDE for Java development.
 3. **MySQL** (v8.x recommended) - Install from [MySQL official site](https://dev.mysql.com/downloads/mysql/).
 4. **Postman** (optional, for testing API endpoints) - Download from [Postman](https://www.postman.com/).
 
@@ -73,7 +74,7 @@ Before running the system, ensure you have the following dependencies installed:
 
 ## Notes
 
-- Adjust port configurations in `application.properties` file if necessary.
+- Adjust port configurations in `application.yml` file if necessary.
 - Ensure firewall or antivirus is not blocking required ports.
 - Use Docker if you prefer containerized deployment.
 

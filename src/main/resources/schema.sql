@@ -31,6 +31,16 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+CREATE TABLE pet (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  energy INT,
+  health INT,
+  happiness INT,
+  design_id INT,
+  owner_id INT
+);
+
 --
 -- Dumping data for table `user`
 --

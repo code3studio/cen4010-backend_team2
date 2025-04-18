@@ -18,7 +18,47 @@ public class PetController {
     public Iterable<Pet> getAllPets() {
         return petRepository.findAll();
     }
-
+    @PostMapping("/{id}/play")
+    public String playWithPet(@PathVariable Long id) {
+        Optional<Pet> optionalPet = petRepository.findById(id);
+        if (optionalPet.isPresent()) {
+            Pet pet = optionalPet.get();
+            if (pet.getHappiness() < 100) {
+                pet.setHappiness(Math.min(100, pet.getHappiness() + 15));
+                pet.setEnergy(Math.max(0, pet.getEnergy() - 10));
+                petRepository.save(pet);
+                return "You played with your pet!";
+            } else {
+                return "Your pet is already very happy!";
+            }
+        }
+        return "Pet not found.";
+    }
+    @PostMapping("/{id}/clean")
+    public String cleanPet(@PathVariable Long id) {
+        Optional<Pet> optionalPet = petRepository.findById(id);
+        if (optionalPet.isPresent()) {
+            Pet pet = optionalPet.get();
+            pet.setHealth(Math.min(100, pet.getHealth() + 20));
+            petRepository.save(pet);
+            return "Pet cleaned and feeling better!";
+        }
+        return "Pet not found.";
+    }
+    @PostMapping("/{id}/emergency")
+    public String emergencyVetVisit(@PathVariable Long id) {
+        Optional<Pet> optionalPet = petRepository.findById(id);
+        if (optionalPet.isPresent()) {
+            Pet pet = optionalPet.get();
+            pet.setHealth(100);
+            pet.setEnergy(100);
+            pet.setHappiness(100);
+            petRepository.save(pet);
+            return "Emergency vet visit successful. Pet fully healed!";
+        }
+        return "Pet not found.";
+    }
+            
     @PostMapping("/{id}/feed")
     public String feedPet(@PathVariable Long id) {
         Optional<Pet> optionalPet = petRepository.findById(id);
